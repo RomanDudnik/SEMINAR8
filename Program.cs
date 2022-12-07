@@ -59,6 +59,7 @@ ShowArray (ChangeArrayRows(createdArray, userRow1, userRow2));
 */
 //Вариант 2 (с вводом строк которые меняем)
 
+/*
 int [,] Create2dArray (int rows, int columns, int min, int max)
 {
     int [,] newArray = new int [rows, columns];
@@ -83,12 +84,12 @@ void ShowArray(int [,] array)
     Console.WriteLine(); 
 }
 
-int [,] ChangeArrayRows(int [,] array1, int row1, int row2)
+int [,] ChangeArrayRows(int [,] array1)
 {
     Console.WriteLine("Input number of 1st row for remove: ");
-    int userRow1 = Convert.ToInt32(Console.ReadLine());
+    int row1 = Convert.ToInt32(Console.ReadLine());
     Console.WriteLine("Input number of 2nd row for remove: ");
-    int userRow2 = Convert.ToInt32(Console.ReadLine());
+    int row2 = Convert.ToInt32(Console.ReadLine());
 
     if (row1 >= 0 && row1 < array1.GetLength(0) && row2 >= 0 && row2 < array1.GetLength(0) && row1 != row2)
     {
@@ -104,6 +105,7 @@ int [,] ChangeArrayRows(int [,] array1, int row1, int row2)
     {
         Console.WriteLine("incorrect input!");
         ChangeArrayRows(array1);
+        return array1;
     }
 }
 
@@ -118,4 +120,5 @@ int userMaxValue = Convert.ToInt32(Console.ReadLine());
 
 int [,] createdArray = Create2dArray(userRows, userColumns, userMinValue, userMaxValue);
 ShowArray (createdArray);
-ShowArray (ChangeArrayRows(createdArray, userRow1, userRow2));
+ShowArray (ChangeArrayRows(createdArray));
+*/
