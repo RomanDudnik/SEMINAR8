@@ -122,3 +122,65 @@ int [,] createdArray = Create2dArray(userRows, userColumns, userMinValue, userMa
 ShowArray (createdArray);
 ShowArray (ChangeArrayRows(createdArray));
 */
+
+// Задайте думерный массив. Написать программу, которая заменяет строки на столбцы .
+// В случае, если это невозможно, программа должна вывести сообщение для пользователя.
+/*
+1 2 3 4     1 3 7 4 
+3 4 5 6     2 4 8 5
+7 8 9 1     3 5 9 6 
+4 5 6 7     4 6 1 7
+*/
+/*
+int [,] Create2dArray (int rows, int columns, int min, int max)
+{
+    int [,] newArray = new int [rows, columns];
+    for (int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < columns; j++)
+            newArray[i, j] = new Random().Next(min, max+1);
+    }
+    return newArray;
+}
+
+void ShowArray(int [,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine(); 
+}
+
+void ChangeRowsColumnsArray (int [,] array2)
+{
+    if (array2.GetLength(0) <= 0 && array2.GetLength(1) <= 0)
+        Console.WriteLine("It should be matrix");
+    else
+    {
+        int [,] array3 = new int [array2.GetLength(1), array2.GetLength(0)];
+        for (int i = 0; i < array2.GetLength(0); i++)
+            for (int j = 0; j < array2.GetLength(1); j++)
+                array3[j,i] = array2[i,j];
+    ShowArray(array3);
+    }
+
+}
+
+Console.WriteLine("Input numbers of rows: ");
+int userRows = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input numbers of column: ");
+int userColumns = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input min possible value: ");
+int userMinValue = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input max possible value: ");
+int userMaxValue = Convert.ToInt32(Console.ReadLine());
+
+int [,] newMatrix = Create2dArray(userRows, userColumns, userMinValue, userMaxValue);
+ShowArray(newMatrix);
+ChangeRowsColumnsArray(newMatrix);
+*/
