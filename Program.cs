@@ -184,3 +184,71 @@ int [,] newMatrix = Create2dArray(userRows, userColumns, userMinValue, userMaxVa
 ShowArray(newMatrix);
 ChangeRowsColumnsArray(newMatrix);
 */
+
+//Задайте думерный массив из целых чисел. Напишите программу, котроая обнулит строку и столбец, 
+// на пересечении которых расположен первый наименьший элемент массива.
+
+int [,] Create2dArray (int rows, int columns, int min, int max)
+{
+    int [,] newArray = new int [rows, columns];
+    for (int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < columns; j++)
+            newArray[i, j] = new Random().Next(min, max+1);
+    }
+    return newArray;
+}
+
+void ShowArray(int [,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine(); 
+}
+
+int [] GetMinIndex (int [,] inArray)
+{
+    int iMin = 0;
+    int jMin = 0;
+
+     for (int i = 0; i < inArray.GetLength(0); i++)
+        for(int j = 0; j < inArray.GetLength(1); j++)
+        {
+            if (inArray[i,j] < inArray[iMin, jMin])
+            {
+                iMin = i;
+                jMin = j;
+            }
+        }
+    return new [] {iMin, jMin};     // int[] minIndex = {i= 0,j= 0} iMin = minIndex[0]; iMin = minIndex[1]
+}
+
+void GetZero(int [,] arrayStart, int [] minInd)
+{
+    for (int i = 0; i < arrayStart.GetLength(0); i++)
+        arrayStart[i, minInd[1]] = 0;
+            for(int j = 0; j < arrayStart.GetLength(1); j++)
+                arrayStart[minInd[0], j] = 0;
+    ShowArray(arrayStart);
+}
+
+Console.WriteLine("Input numbers of rows: ");
+int userRows = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input numbers of column: ");
+int userColumns = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input min possible value: ");
+int userMinValue = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input max possible value: ");
+int userMaxValue = Convert.ToInt32(Console.ReadLine());
+
+int [,] frirstArray = Create2dArray(userRows, userColumns, userMinValue, userMaxValue);
+ShowArray(frirstArray);
+int [] minIndexArray = GetMinIndex(frirstArray);
+GetZero(frirstArray, minIndexArray);
+
